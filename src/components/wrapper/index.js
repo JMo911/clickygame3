@@ -1,9 +1,10 @@
-const React = require('react');
+import React from 'react';
+import './style.css';
 
 class Wrapper extends React.Component {
     render() {
-        return <div>Hello, {this.props.name}</div>
+        return <div class='wrapper'>Hello, {this.props.name}</div>
     }
 }
 
-module.exports = Wrapper;
+export default Wrapper;
