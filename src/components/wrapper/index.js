@@ -3,7 +3,7 @@ import './style.css';
 
 class Wrapper extends React.Component {
     render() {
-        return <div class='wrapper'>Hello, {this.props.name}</div>
+        return <div class='wrapper'>{this.props.children}</div>
     }
 }
 
