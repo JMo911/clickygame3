@@ -10,7 +10,7 @@ function App() {
     <Wrapper name='angela'>
       {Space.map(({id, name, image}) =>
         <Cards
-        id={id}
+        key={id}
         name={name}
         image = {image}>
         </Cards>
