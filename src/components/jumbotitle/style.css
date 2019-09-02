@@ -1,0 +1,8 @@
+.jumbotron{
+    color: black;
+    width: 100vw;
+    margin-top: 20px;
+    opacity: 0.8;
+    background-color: teal;
+    text-shadow: white 2px 1px 8px;
+}
