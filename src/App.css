@@ -31,3 +31,10 @@
     transform: rotate(360deg);
   }
 }
+
+/* MY ADDED CSS */
+@import url('https://fonts.googleapis.com/css?family=Space+Mono&display=swap');
+
+body{
+  font-family: 'Space Mono', monospace;
+}
