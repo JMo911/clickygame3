@@ -6,3 +6,7 @@
     background-color: teal;
     text-shadow: white 2px 1px 8px;
 }
+
+.lead{
+    font-weight: 800;
+}
