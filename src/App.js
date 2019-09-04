@@ -4,6 +4,7 @@ import './App.css';
 import Wrapper from './components/wrapper';
 import Cards from './components/cards';
 import JumboTitle from './components/jumbotitle';
+import Score from './components/score';
 import Space from './space.json'
 
 let topScore = 0;
@@ -11,7 +12,8 @@ let score = 0;
 
 class App extends React.Component {
   state = {
-    Space: Space
+    Space: Space,
+    score: score
   }
   
   handleClick = (e, id) => {
@@ -26,9 +28,11 @@ class App extends React.Component {
         if (element.guessed === false) {
           element.guessed = true;
           score++;
+          this.setState({score: score});
         } else if (element.guessed === true) {
           if (score > topScore){
             topScore = score;
+            //THIS IS WHERE WE NEED LOSE FUNCTIONALITY
           }
           score = 0;
           Space.forEach(element => element.guessed = false);
@@ -93,9 +97,13 @@ class App extends React.Component {
 
   render() {
     return(
-      <Wrapper name='angela'>
+      <Wrapper>
+      
       <JumboTitle 
       descrip='Welcome to Space Exploration! Make sure to visit each destination ONLY ONE TIME or you will run out of fuel and perish.'>Space Game</JumboTitle>
+      <Score score={score}
+      topScore={topScore}></Score>  
+      
       {Space.map(({id, name, image, guessed}) =>
         <Cards
         key={id}
