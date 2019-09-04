@@ -17,13 +17,8 @@ class App extends React.Component {
   }
   
   handleClick = (e, id) => {
-    // access to e.target here
-    // e.preventDefault();
-    // console.log(id);
-    // console.log(Space.id);
+    
     Space.forEach(element => {
-      // console.log(element.id);
-      // console.log(element.guessed)
       if (element.id === id) {
         if (element.guessed === false) {
           element.guessed = true;
@@ -35,6 +30,7 @@ class App extends React.Component {
             //THIS IS WHERE WE NEED LOSE FUNCTIONALITY
           }
           score = 0;
+          //MAKE COMPONENT RED FOR 3 SEC?
           this.setState({score: score})
           Space.forEach(element => element.guessed = false);
         }
@@ -46,11 +42,46 @@ class App extends React.Component {
 
       
     });
-    // if(Space.id === id) {
-    //   Space[id].setAttribute("guessed", true);
-    // }
-    // console.log(e);
-}
+    //RESHUFFLE CARDS EACH CLICK
+    function shuffle(array) {
+      const positions=[];
+      while (positions.length < Space.length) {
+        let randomNumber = Math.floor((Math.random()*Space.length) + 1);
+        if (positions.indexOf(randomNumber) === -1) {
+          positions.push(randomNumber);
+        }
+      };
+      const shuffledCards=[];
+      for (let i = 0; i < positions.length; i++) {
+        shuffledCards.push(Space[positions[i]])
+      }
+      return shuffledCards;
+    }
+    const newSpace = shuffle(this.state.Space);
+    this.setState({Space: newSpace});
+    console.log(newSpace);
+    // this.setState({Space: shuffle(this.state.Space)});
+    // const newSpace = Space.map(({key}) => {
+    //   <Cards
+    //   key={(function(){
+    //     for (let i = 0; i < positions.length; i ++) {
+    //       return positions[i]
+    //     }
+    //   })
+    //   }></Cards>
+    // });
+    // const newSpace = this.state.Space.map((key) =>{
+    //   <Cards
+    //   key={(function(){
+    //     for (let i = 0; i < positions.length; i ++) {
+    //       return positions[i]
+    //     }
+    //   })
+    //   }></Cards>
+    //   this.setState({Space: newSpace});
+    // });
+    
+  }
 
   // gamePlay(identifier, e) {
     //PLAYER ACCUMULATES POINTS UNTIL THEY CLICK THE SAME CARD TWICE. THIS SETS THEIR HIGH SCORE IF THIS SCORE IS > CURRENT HIGH SCORE. CARDS REARRANGE AFTER BEING CLICKED EACH TIME. MESSAGES FOR CORRECT AND INCORRECT GUESSES. SCORE AND TOP SCORE DISPLAYED (SCORE SET TO 0 IF SAME IMAGE CLICKED TWICE)
