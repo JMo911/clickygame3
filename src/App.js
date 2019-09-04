@@ -35,6 +35,7 @@ class App extends React.Component {
             //THIS IS WHERE WE NEED LOSE FUNCTIONALITY
           }
           score = 0;
+          this.setState({score: score})
           Space.forEach(element => element.guessed = false);
         }
         
@@ -98,22 +99,19 @@ class App extends React.Component {
   render() {
     return(
       <Wrapper>
-      
-      <JumboTitle 
-      descrip='Welcome to Space Exploration! Make sure to visit each destination ONLY ONE TIME or you will run out of fuel and perish.'>Space Game</JumboTitle>
-      <Score score={score}
-      topScore={topScore}></Score>  
-      
-      {Space.map(({id, name, image, guessed}) =>
-        <Cards
-        key={id}
-        name={name}
-        image = {image}
-        guessed = {guessed}
-        gamePlay = {((e) => this.handleClick(e, id))}>
-        </Cards>
-      )}
-    </Wrapper>
+        <JumboTitle 
+        descrip='Welcome to Space Exploration! Make sure to visit each destination ONLY ONE TIME or you will run out of fuel and perish.'>Space Game</JumboTitle>
+        <Score score={score} topScore={topScore}></Score>  
+        {Space.map(({id, name, image, guessed}) =>
+          <Cards
+          key={id}
+          name={name}
+          image = {image}
+          guessed = {guessed}
+          gamePlay = {((e) => this.handleClick(e, id))}>
+          </Cards>
+        )}
+      </Wrapper>
     )
   }
 }
