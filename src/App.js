@@ -7,6 +7,7 @@ import JumboTitle from './components/jumbotitle';
 import Space from './space.json'
 
 let topScore = 0;
+let score = 0;
 
 class App extends React.Component {
   state = {
@@ -24,9 +25,17 @@ class App extends React.Component {
       if (element.id === id) {
         if (element.guessed === false) {
           element.guessed = true;
-          topScore++;
+          score++;
+        } else if (element.guessed === true) {
+          if (score > topScore){
+            topScore = score;
+          }
+          score = 0;
+          Space.forEach(element => element.guessed = false);
         }
         
+        console.log('Score: ' + score);
+        console.log('----------\n\n Top Score:')
         console.log(topScore);
       }
 
