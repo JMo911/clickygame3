@@ -61,7 +61,7 @@ class App extends React.Component {
     }
     const newSpace = shuffle(this.state.Space);
     this.setState({Space: newSpace});
-    console.log(newSpace);
+    // console.log(newSpace);
 
     //POTENTIALLY EASIER WAY, LEAVING FOR FUTURE REFERENCE
     // function easyShuffle(element) {
