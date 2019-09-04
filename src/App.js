@@ -35,9 +35,9 @@ class App extends React.Component {
           Space.forEach(element => element.guessed = false);
         }
         
-        console.log('Score: ' + score);
-        console.log('----------\n\n Top Score:')
-        console.log(topScore);
+        // console.log('Score: ' + score);
+        // console.log('----------\n\n Top Score:')
+        // console.log(topScore);
       }
 
       
@@ -46,7 +46,8 @@ class App extends React.Component {
     function shuffle(array) {
       const positions=[];
       while (positions.length < Space.length) {
-        let randomNumber = Math.floor((Math.random()*Space.length) + 1);
+        let randomNumber = Math.floor((Math.random()*Space.length));
+        // console.log(randomNumber);
         if (positions.indexOf(randomNumber) === -1) {
           positions.push(randomNumber);
         }
@@ -55,6 +56,7 @@ class App extends React.Component {
       for (let i = 0; i < positions.length; i++) {
         shuffledCards.push(Space[positions[i]])
       }
+      console.log(positions);
       return shuffledCards;
     }
     const newSpace = shuffle(this.state.Space);
