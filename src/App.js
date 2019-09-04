@@ -59,21 +59,23 @@ class App extends React.Component {
       }
       return shuffledCards;
     }
-    // const newSpace = shuffle(this.state.Space);
-    // this.setState({Space: newSpace});
-    // console.log(newSpace);
-    function easyShuffle(element) {
-      const randomNumber = Math.floor((Math.random()*1000));
-      let newID = parseInt(element.id) * randomNumber;
-      // console.log(newID);
-      console.log(element.key)
-      element.key = newID;
-    }
+    const newSpace = shuffle(this.state.Space);
+    this.setState({Space: newSpace});
+    console.log(newSpace);
+
+    //POTENTIALLY EASIER WAY, LEAVING FOR FUTURE REFERENCE
+    // function easyShuffle(element) {
+    //   const randomNumber = Math.floor((Math.random()*1000));
+    //   let newID = parseInt(element.id) * randomNumber;
+    //   console.log(newID);
+    //   console.log(element.key)
+    //   element.key = newID;
+    // }
     // console.log(this.state.Space);
-    const newSpace = this.state.Space.map(easyShuffle);
+    // const newSpace = this.state.Space.map(easyShuffle);
     // console.log(newSpace);
-    
   }
+  //END OF HANDLECLICK
 
   render() {
     return(
@@ -81,7 +83,7 @@ class App extends React.Component {
         <JumboTitle 
         descrip='Welcome to Space Exploration! Make sure to visit each destination ONLY ONE TIME or you will run out of fuel and perish.'>Space Game</JumboTitle>
         <Score score={score} topScore={topScore}></Score>  
-        {Space.map(({id, name, image, guessed}) =>
+        {this.state.Space.map(({id, name, image, guessed}) =>
           <Cards
           key={id}
           name={name}
