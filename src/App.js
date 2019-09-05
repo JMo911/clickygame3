@@ -13,15 +13,12 @@ let score = 0;
 class App extends React.Component {
   state = {
     Space: Space,
-    score: score
+    score: score,
+    style: null
   }
   
   handleClick = (e, id) => {
-    // const loseStyle = {
-    //   losscolor: {
-    //     'background-color': 'red'
-    //   }
-    // }
+ 
     
     Space.forEach(element => {
       if (element.id === id) {
@@ -35,7 +32,19 @@ class App extends React.Component {
             //THIS IS WHERE WE NEED LOSE FUNCTIONALITY
           }
           score = 0;
+          const loseStyle = {
+            losscolor: {
+              'backgroundColor': 'red'
+            }
+          }
+          this.setState({style: loseStyle.losscolor});
+          setTimeout(() => this.setState({style: null}), 3000);
+          // this.setState({style: loseStyle.losscolor})
+          console.log(this.state.style);
+          
+          
           //MAKE COMPONENT RED FOR 3 SEC?
+
           this.setState({score: score})
           Space.forEach(element => element.guessed = false);
         }
@@ -82,7 +91,9 @@ class App extends React.Component {
       <Wrapper>
         <JumboTitle 
         descrip='Welcome to Space Exploration! Make sure to visit each destination ONLY ONE TIME or you will run out of fuel and perish.'>Space Game</JumboTitle>
-        <Score score={score} topScore={topScore}></Score>  
+        <Score score={score} topScore={topScore} 
+        style={this.state.style}
+        ></Score>  
         {this.state.Space.map(({id, name, image, guessed}) =>
           <Cards
           key={id}
