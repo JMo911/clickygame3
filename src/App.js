@@ -34,18 +34,18 @@ class App extends React.Component {
           score = 0;
           const loseStyle = {
             losscolor: {
-              'background-color': 'red'
+              'backgroundColor': 'red'
             }
           }
-          // setTimeout(() => this.setState({style: loseStyle.losscolor}), 3000);
+          this.setState({style: loseStyle.losscolor});
+          setTimeout(() => this.setState({style: null}), 3000);
           // this.setState({style: loseStyle.losscolor})
           console.log(this.state.style);
           
           
           //MAKE COMPONENT RED FOR 3 SEC?
 
-          this.setState({score: score, 
-                        style: loseStyle.losscolor})
+          this.setState({score: score})
           Space.forEach(element => element.guessed = false);
         }
         
