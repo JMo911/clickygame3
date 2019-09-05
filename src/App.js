@@ -82,7 +82,7 @@ class App extends React.Component {
     // }
     // console.log(this.state.Space);
     // const newSpace = this.state.Space.map(easyShuffle);
-    // console.log(newSpace);
+    // console.log(newSpace.sort());
   }
   //END OF HANDLECLICK
 
